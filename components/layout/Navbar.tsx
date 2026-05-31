@@ -13,7 +13,7 @@ export function Navbar() {
         </Link>
         <div className="flex items-center space-x-4">
           <a
-            href="https://github.com"
+            href="https://github.com/PriDev07/CodeScope-AI"
             target="_blank"
             rel="noreferrer"
             className="text-sm font-medium text-gray-400 hover:text-gray-100 transition-colors flex items-center space-x-2"
