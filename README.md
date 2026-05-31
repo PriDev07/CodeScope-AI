@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# <img src="./public/logo_square.png" width="30" height="30" /> CodeScope AI
 
-## Getting Started
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Build: Next.js](https://img.shields.io/badge/Powered_by-Next.js-black?logo=next.js)
 
-First, run the development server:
+**CodeScope AI** is a production-ready, open-source tool that helps developers analyze GitHub issues and instantly discover where to start working in a codebase. By providing an issue URL, it fetches the repository's file tree and uses an advanced AI context window (Groq `llama-3.3-70b-versatile`) to point you straight to the files you need to modify.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
+- **AI-Powered Code Navigation**: Get immediate context on complex issues.
+- **Deep Issue Pagination**: Automatically loops page boundaries to fetch up to 500 open issues from massive repositories.
+- **Production Grade Architecture**: React Server Components, clean glassmorphism Tailwind UI, and decoupled frontend architecture.
+- **Secure Context Limit Handling**: Automatically scales to massive open-source project structures via intelligent tree-truncation strategies.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Tech Stack
+- [Next.js 14](https://nextjs.org) (App Router)
+- [React 18](https://react.dev)
+- [Tailwind CSS](https://tailwindcss.com) & [Lucide Icons](https://lucide.dev)
+- [Groq SDK](https://console.groq.com/docs/quickstart) (LLM Engine)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Local Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/codescope-ai.git
+   cd codescope-ai
+   ```
 
-## Learn More
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Configure Environment Variables:**
+   Create a `.env.local` file at the root:
+   ```env
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+   *(Optional)* For higher GitHub API rate limits, add a personal access token:
+   ```env
+   GITHUB_TOKEN=your_github_token_here
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌍 Deployment
 
-## Deploy on Vercel
+CodeScope AI is fully optimized for **Vercel** serverless environments.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push your code to a GitHub repository.
+2. Go to [Vercel](https://vercel.com/) and click **Add New Project**.
+3. Import your `codescope-ai` repository.
+4. Under **Environment Variables**, strictly add:
+   - `GROQ_API_KEY` (Required)
+   - `GITHUB_TOKEN` (Optional, Recommended for public users)
+5. Click **Deploy**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js will automatically utilize Edge/Serverless functions for the API routes.
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome! 
+Feel free to check [issues page](https://github.com/your-username/codescope-ai/issues).
+
+## 📝 License
+This project is open-sourced under the MIT License.
