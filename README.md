@@ -21,8 +21,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/codescope-ai.git
-   cd codescope-ai
+   git clone https://github.com/PriDev07/CodeScope-AI
    ```
 
 2. **Install dependencies:**
@@ -61,7 +60,6 @@ Next.js will automatically utilize Edge/Serverless functions for the API routes.
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! 
-Feel free to check [issues page](https://github.com/your-username/codescope-ai/issues).
-
+Feel free to check [issues page](https://github.com/PriDev07/CodeScope-AI/issues).
 ## 📝 License
 This project is open-sourced under the MIT License.
