@@ -9,14 +9,34 @@ const getHeaders = () => {
 };
 
 export async function fetchIssues(owner: string, repo: string) {
-  const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/issues?state=open&per_page=20`;
-  const response = await fetch(url, { headers: getHeaders() });
-  
-  if (!response.ok) {
-    throw new Error(`Failed to fetch issues: ${response.statusText}`);
+  let allIssues: any[] = [];
+  let page = 1;
+  const maxPages = 5; // Limit to 500 issues to prevent timeouts/rate limits
+
+  while (page <= maxPages) {
+    const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/issues?state=open&per_page=100&page=${page}`;
+    const response = await fetch(url, { headers: getHeaders() });
+    
+    if (!response.ok) {
+      if (page === 1) throw new Error(`Failed to fetch issues: ${response.statusText}`);
+      break;
+    }
+    
+    const data = await response.json();
+    if (!Array.isArray(data) || data.length === 0) break;
+    
+    // Filter out pull requests (they are returned as issues in the GitHub API)
+    const issuesOnly = data.filter(item => !item.pull_request);
+    allIssues = allIssues.concat(issuesOnly);
+    
+    const linkHeader = response.headers.get('link');
+    if (!linkHeader || !linkHeader.includes('rel="next"')) {
+      break;
+    }
+    page++;
   }
   
-  return response.json();
+  return allIssues;
 }
 
 export async function fetchIssueDetails(owner: string, repo: string, issueNumber: number) {
